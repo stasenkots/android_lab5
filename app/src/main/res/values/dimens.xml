@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_activity_data_horizontal">15dp</dimen>
+    <dimen name="main_activity_button_end">15dp</dimen>
+    <dimen name="form_edit_text_general">10dp</dimen>
+    <dimen name="form_button_general">50dp</dimen>
+</resources>

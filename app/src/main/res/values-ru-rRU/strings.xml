@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">android_lab4</string>
+    <string name="edit">Редактировать</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="city">Город</string>
+    <string name="country">Страна</string>
+    <string name="address">Адрес</string>
+    <string name="comment">Комментарий</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отменить</string>
+    <string name="not_empty">Это поле не может быть пустым</string>
+</resources>
