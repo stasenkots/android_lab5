@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_lab4">
         <activity
-            android:name=".CommentFormActivity"
+            android:name=".form.CommentFormActivity"
             android:exported="true" />
         <activity
-            android:name=".AddressFormActivity"
+            android:name=".form.AddressFormActivity"
             android:exported="true" />
         <activity
-            android:name=".NameFormActivity"
+            android:name=".form.NameFormActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

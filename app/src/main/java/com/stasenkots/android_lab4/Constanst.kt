@@ -1,6 +1,6 @@
 package com.stasenkots.android_lab4
 
-object Constants {
+object Field {
     const val name = "name"
     const val surname = "surname"
     const val city = "city"
@@ -8,3 +8,9 @@ object Constants {
     const val address = "address"
     const val comment = "comment"
 }
+
+
+object BundleKey {
+    const val answer = "answer"
+}
+

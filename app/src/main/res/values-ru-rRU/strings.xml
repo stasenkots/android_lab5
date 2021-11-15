@@ -11,4 +11,8 @@
     <string name="save">Сохранить</string>
     <string name="cancel">Отменить</string>
     <string name="not_empty">Это поле не может быть пустым</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="do_you_want_to_cancel_form">Вы действительно хотите выйти?</string>
+    <string name="exit">Выход</string>
 </resources>

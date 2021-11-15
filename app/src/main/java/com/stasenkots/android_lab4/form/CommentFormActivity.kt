@@ -1,22 +1,25 @@
-package com.stasenkots.android_lab4
+package com.stasenkots.android_lab4.form
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.os.bundleOf
-import com.stasenkots.android_lab4.databinding.ActivityAddressFormBinding
+import com.stasenkots.android_lab4.CancelDialogActivity
+import com.stasenkots.android_lab4.Field
+import com.stasenkots.android_lab4.R
 import com.stasenkots.android_lab4.databinding.ActivityCommentFormBinding
 
-class CommentFormActivity: AppCompatActivity() {
+class CommentFormActivity: CancelDialogActivity() {
 
     private lateinit var binding: ActivityCommentFormBinding
+
+    override val menuId: Int = R.menu.form_menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCommentFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val comment = intent.getStringExtra(Constants.comment).orEmpty()
+        val comment = intent.getStringExtra(Field.comment).orEmpty()
 
         binding.comment.setText(comment)
 
@@ -38,7 +41,7 @@ class CommentFormActivity: AppCompatActivity() {
             val returnIntent = Intent().apply {
                 putExtras(
                     bundleOf(
-                        Constants.comment to comment,
+                        Field.comment to comment,
                     )
                 )
             }

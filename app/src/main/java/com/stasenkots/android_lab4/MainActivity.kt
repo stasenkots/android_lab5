@@ -3,18 +3,21 @@ package com.stasenkots.android_lab4
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import com.stasenkots.android_lab4.databinding.ActivityMainBinding
+import com.stasenkots.android_lab4.form.AddressFormActivity
+import com.stasenkots.android_lab4.form.CommentFormActivity
+import com.stasenkots.android_lab4.form.NameFormActivity
 
-class MainActivity: AppCompatActivity() {
+class MainActivity: CancelDialogActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    override val menuId: Int = R.menu.main_menu
 
     private var name = "Tanya"
     private var surname = "Stasenko"
@@ -107,20 +110,20 @@ class MainActivity: AppCompatActivity() {
 
 
     private fun renderResultName(intent: Intent) {
-        name = intent.getStringExtra(Constants.name).orEmpty()
-        surname = intent.getStringExtra(Constants.surname).orEmpty()
+        name = intent.getStringExtra(Field.name).orEmpty()
+        surname = intent.getStringExtra(Field.surname).orEmpty()
         setupDataViews()
     }
 
     private fun renderResultAddress(intent: Intent) {
-        country = intent.getStringExtra(Constants.country).orEmpty()
-        city = intent.getStringExtra(Constants.city).orEmpty()
-        address = intent.getStringExtra(Constants.address).orEmpty()
+        country = intent.getStringExtra(Field.country).orEmpty()
+        city = intent.getStringExtra(Field.city).orEmpty()
+        address = intent.getStringExtra(Field.address).orEmpty()
         setupDataViews()
     }
 
     private fun renderResultComment(intent: Intent) {
-        comment = intent.getStringExtra(Constants.comment).orEmpty()
+        comment = intent.getStringExtra(Field.comment).orEmpty()
         setupDataViews()
     }
 
@@ -129,12 +132,12 @@ class MainActivity: AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putAll(
             bundleOf(
-                Constants.name to name,
-                Constants.surname to surname,
-                Constants.city to city,
-                Constants.country to country,
-                Constants.address to address,
-                Constants.comment to comment,
+                Field.name to name,
+                Field.surname to surname,
+                Field.city to city,
+                Field.country to country,
+                Field.address to address,
+                Field.comment to comment,
             )
         )
     }
@@ -142,12 +145,12 @@ class MainActivity: AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        name = savedInstanceState.getString(Constants.name, "").orEmpty()
-        surname = savedInstanceState.getString(Constants.surname, "").orEmpty()
-        city = savedInstanceState.getString(Constants.city, "").orEmpty()
-        country = savedInstanceState.getString(Constants.country, "").orEmpty()
-        address = savedInstanceState.getString(Constants.address, "").orEmpty()
-        comment = savedInstanceState.getString(Constants.comment, "").orEmpty()
+        name = savedInstanceState.getString(Field.name, "").orEmpty()
+        surname = savedInstanceState.getString(Field.surname, "").orEmpty()
+        city = savedInstanceState.getString(Field.city, "").orEmpty()
+        country = savedInstanceState.getString(Field.country, "").orEmpty()
+        address = savedInstanceState.getString(Field.address, "").orEmpty()
+        comment = savedInstanceState.getString(Field.comment, "").orEmpty()
         setupDataViews()
     }
 
@@ -160,24 +163,23 @@ class MainActivity: AppCompatActivity() {
     }
 
 
-
     private fun getNameArgs(): Bundle {
         return bundleOf(
-            Constants.name to name,
-            Constants.surname to surname
+            Field.name to name,
+            Field.surname to surname
         )
     }
 
     private fun getAddressArgs(): Bundle {
         return bundleOf(
-            Constants.country to country,
-            Constants.city to city,
-            Constants.address to address
+            Field.country to country,
+            Field.city to city,
+            Field.address to address
         )
     }
 
     private fun getCommentArgs(): Bundle {
-        return bundleOf(Constants.comment to comment)
+        return bundleOf(Field.comment to comment)
     }
 
 }

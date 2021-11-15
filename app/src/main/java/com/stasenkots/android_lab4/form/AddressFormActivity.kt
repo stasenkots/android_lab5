@@ -1,25 +1,28 @@
-package com.stasenkots.android_lab4
+package com.stasenkots.android_lab4.form
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
+import com.stasenkots.android_lab4.CancelDialogActivity
+import com.stasenkots.android_lab4.Field
+import com.stasenkots.android_lab4.R
 import com.stasenkots.android_lab4.databinding.ActivityAddressFormBinding
-import com.stasenkots.android_lab4.databinding.ActivityNameFormBinding
 
-class AddressFormActivity: AppCompatActivity() {
+class AddressFormActivity: CancelDialogActivity() {
 
     private lateinit var binding: ActivityAddressFormBinding
+
+    override val menuId: Int = R.menu.form_menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddressFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val country = intent.getStringExtra(Constants.country).orEmpty()
-        val city = intent.getStringExtra(Constants.city).orEmpty()
-        val address = intent.getStringExtra(Constants.address).orEmpty()
+        val country = intent.getStringExtra(Field.country).orEmpty()
+        val city = intent.getStringExtra(Field.city).orEmpty()
+        val address = intent.getStringExtra(Field.address).orEmpty()
 
         binding.country.setText(country)
         binding.country.doOnTextChanged { _, _, _, _ ->
@@ -55,9 +58,9 @@ class AddressFormActivity: AppCompatActivity() {
             val returnIntent = Intent().apply {
                 putExtras(
                     bundleOf(
-                        Constants.country to country,
-                        Constants.city to city,
-                        Constants.address to address
+                        Field.country to country,
+                        Field.city to city,
+                        Field.address to address
                     )
                 )
             }

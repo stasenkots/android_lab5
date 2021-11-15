@@ -1,24 +1,32 @@
-package com.stasenkots.android_lab4
+package com.stasenkots.android_lab4.form
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
+import com.stasenkots.android_lab4.BundleKey
+import com.stasenkots.android_lab4.CancelDialogActivity
+import com.stasenkots.android_lab4.Field
+import com.stasenkots.android_lab4.R
 import com.stasenkots.android_lab4.databinding.ActivityNameFormBinding
+import com.stasenkots.android_lab4.dialogs.CancelDialogFragment
+import com.stasenkots.android_lab4.dialogs.CancelDialogResult
 
-class NameFormActivity: AppCompatActivity() {
+class NameFormActivity: CancelDialogActivity() {
 
     private lateinit var binding: ActivityNameFormBinding
+
+    override val menuId: Int = R.menu.form_menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNameFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name = intent.getStringExtra(Constants.name).orEmpty()
-        val surname = intent.getStringExtra(Constants.surname).orEmpty()
+        val name = intent.getStringExtra(Field.name).orEmpty()
+        val surname = intent.getStringExtra(Field.surname).orEmpty()
 
         binding.name.setText(name)
         binding.name.doOnTextChanged { _, _, _, _ ->
@@ -43,13 +51,13 @@ class NameFormActivity: AppCompatActivity() {
         binding.save.setOnClickListener {
             if (!validFields()) return@setOnClickListener
 
-            val name = binding.name.text.toString()
             val surname = binding.surname.text.toString()
             val returnIntent = Intent().apply {
+            val name = binding.name.text.toString()
                 putExtras(
                     bundleOf(
-                        Constants.name to name,
-                        Constants.surname to surname
+                        Field.name to name,
+                        Field.surname to surname
                     )
                 )
             }
@@ -72,5 +80,7 @@ class NameFormActivity: AppCompatActivity() {
 
         }
     }
+
+
 
 }
